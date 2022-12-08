@@ -1,0 +1,150 @@
+- all project - url : https://api.cosisma.com/project/all
+              - method : GET
+
+- one project - url : https://api.cosisma.com/project/one/id/{project_id}
+              - method : GET
+  
+- add project - url : https://api.cosisma.com/project/add 
+              - method : POST
+              - body : - 'project_code'
+                       - 'project_date'
+                       - 'project_note'
+                       - 'cat_id'  //categori id
+              
+- edit project - url : https://api.cosisma.com/project/edit
+              - method : PUT
+              - body : - 'project_date'
+                       - 'project_note'
+                       - 'cat_id'  //categori id
+
+- delete project - url : https://api.cosisma.com/project/delete/id/{project_id}
+              - method : DELETE
+
+- approve project - url : https://api.cosisma.com/project/toApprove/id/{project_id}
+              - method : GET
+
+- decline project - url : https://api.cosisma.com/project/toDecline/id/{project_id}
+              - method : GET
+
+- add teknisi project - url : https://api.cosisma.com/project/addTechnician/id/{project_id}
+              - method : POST
+              - body : - 'technician' | 'example' : [
+                                                      {
+                                                        "userCode": 1,
+                                                        "user_leader": 0
+                                                      },
+                                                      {
+                                                        "userCode": 2,
+                                                        "user_leader": 1
+                                                      }
+                                                    ]
+                       - 'status' // 'Approve' or 'Survey'
+                                                
+- update teknisi project - url : https://api.cosisma.com/project/updateTechnician/id/{project_id}
+              - method : POST
+              - body : - 'technician' | 'example' : [
+                                                      {
+                                                        "userCode": 1,
+                                                        "user_leader": 0
+                                                      },
+                                                      {
+                                                        "userCode": 2,
+                                                        "user_leader": 1
+                                                      }
+                                                    ]
+                       - 'status' // 'Approve' or 'Survey'
+
+
+- add sitax project - url : https://api.cosisma.com/project/sitax/id/{project_id}
+              - method : POST
+              - body : - 'sitax_type' : 'sitax,non-sitax',
+                         if(sitax) - 'sitax_total'
+                                   - 'sitax_list' | example : ["rt","rw"]
+                                  
+
+- add feeder project - url : https://api.cosisma.com/project/addFeederBatch/id/{project_id}
+              - method : POST
+              - body : - 'feeder' | 'example' : [
+                                                  {
+                                                    "feeder_odc": "",
+                                                    "feeder_capacity": "",
+                                                    "feeder_address": "",
+                                                    "feeder_lg": "",
+                                                    "feeder_lt": "",
+                                                    "feeder_port": "",
+                                                    "feeder_core": ""
+                                                  },
+                                                  {
+                                                    "feeder_odc": "",
+                                                    "feeder_capacity": "",
+                                                    "feeder_address": "",
+                                                    "feeder_lg": "",
+                                                    "feeder_lt": "",
+                                                    "feeder_port": "",
+                                                    "feeder_core": ""
+                                                  }
+                                                ]
+
+- update feeder project - url : https://api.cosisma.com/project/updateFeeder/id/{feeder_id}
+              - method : PUT
+              - body : - feeder_odc
+                       - feeder_capacity
+                       - feeder_address
+                       - feeder_lg
+                       - feeder_lt
+                       - feeder_port
+                       - feeder_core
+
+- delete feeder project - url : https://api.cosisma.com/project/deleteFeeder/id/{feeder_id}
+              - method : DELETE
+
+- add distribusi project - url : https://api.cosisma.com/project/addDistribusiBatch/id/{feeder_id}
+              - method : POST
+              - body : - 'distribusi' | 'example' : [
+                                                      {
+                                                        "distribusi_kukd": "12",
+                                                        "distribusi_address": "asdaasd",
+                                                        "distribusi_lg": "8.67657",
+                                                        "distribusi_lt": "0.243423",
+                                                        "distribusi_core": "8",
+                                                        "distribusi_core_opsi": "9",
+                                                        "distribusi_capacity": "16",
+                                                        "distribusi_note": ""
+                                                      }
+                                                    ]
+                                                    or
+                                                    [
+                                                      {
+                                                        "distribusi_kukd": "12",
+                                                        "distribusi_dropcore": "199",
+                                                        "distribusi_address": "asdaasd",
+                                                        "distribusi_lg": "8.67657",
+                                                        "distribusi_lt": "0.243423",
+                                                        "distribusi_core": "8",
+                                                        "distribusi_core_opsi": "9",
+                                                        "distribusi_capacity": "16",
+                                                        "distribusi_note": ""
+                                                      }
+                                                    ]
+
+- update distribusi project - url : https://api.cosisma.com/project/updateDistribusi/id/{distribusi_id}
+              - method : PUT
+              - body : - distribusi_kukd
+                       - distribusi_dropcore | if label_cat on project <> 1
+                       - distribusi_address
+                       - distribusi_lg
+                       - distribusi_lt
+                       - distribusi_core
+                       - distribusi_core_opsi | nullabel
+                       - distribusi_capacity
+                       - distribusi_note  | nullabel
+
+- delete distribusi project - url : https://api.cosisma.com/project/deleteDistribusi/id/{distribusi_id}
+              - method : DELETE
+
+- add file survey project - url : https://api.cosisma.com/project/addFileSurvey/id/{project_id}
+              - method : POST
+              - body : - 'file' | base64 ex:"data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,UEsDBBQABgAI......."
+
+- delete file survey project - url : https://api.cosisma.com/project/deleteFileSurvey/id/{project_id}/survey/{survey_id}
+              - method : DELETE
